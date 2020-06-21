@@ -2,10 +2,12 @@ use std::fs;
 use std::error::Error;
 use std::env;
 
+// set up tests
 #[cfg(test)]
 mod tests {
     use super::*;
 
+    // case sensitive test
     #[test]
     fn case_sensitive() {
         let query = "duct";
@@ -18,6 +20,7 @@ Duct tape.";
         assert_eq!(vec!["safe, fast, productive."], search(query, contents));
     }
 
+    // case insensitive test
     #[test]
     fn case_insensitive() {
         let query = "rUsT";

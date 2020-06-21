@@ -4,13 +4,17 @@ use std::process;
 use minigrep::Config;
 
 fn main() {
+
+    // get arguments from the command line call
     let args: Vec<String> = env::args().collect();
 
+    // try to parse arguments
     let config = Config::new(&args).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
 
+    // try to run grep logic
     if let Err(e) = minigrep::run(config) {
         eprintln!("Application error: {}", e);
         process::exit(1);
