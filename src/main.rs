@@ -5,11 +5,8 @@ use minigrep::Config;
 
 fn main() {
 
-    // get arguments from the command line call
-    let args: Vec<String> = env::args().collect();
-
     // try to parse arguments
-    let config = Config::new(&args).unwrap_or_else(|err| {
+    let config = Config::new(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
